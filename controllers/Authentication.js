@@ -1,10 +1,10 @@
 const User = require('../models/Users');
 
 class UserQuery{
-    static createUser(email, password){
-        let user = new User(email);
+    static createUser(name, email, password){
+        let user = new User(name, email);
         user.setPassword(password);
-        db.query('INSERT INTO t_usuario SET ?', [user], (err,res)=>{
+        db.query('INSERT INTO t_users SET ?', [user], (err,res)=>{
             if(err){
                 console.log(err);
                 return 'error';
@@ -17,7 +17,7 @@ class UserQuery{
 
 var controller = {
     register: (req,res) => {
-        let response = UserQuery.createUser(req.body.email, req.body.password);
+        let response = UserQuery.createUser(req.body.name, req.body.email, req.body.password);
         res.status(200).send(response);
     }
 };

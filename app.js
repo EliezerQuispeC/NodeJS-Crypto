@@ -20,7 +20,7 @@ db.connect((err)=>{
 global.db = db;
 
 //Routes
-var route_auth = require('routes/Authentication');
+var route_auth = require('./routes/Authentication');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
